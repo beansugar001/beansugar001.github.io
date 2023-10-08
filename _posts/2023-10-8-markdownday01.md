@@ -247,7 +247,13 @@ ___
 
     解析器会自动解析https://www.baidu.com/
 
+7. 链接样式
 
+可在[]内添加样式（或整个）
+
+[**百度**](https://www.baidu.com/)
+
+    [**百度**](https://www.baidu.com/)
 
 
 
