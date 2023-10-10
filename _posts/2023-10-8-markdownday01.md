@@ -257,9 +257,24 @@ ___
 
 # 图片
 
-![这是一张豆酥糖图片](https://cn.bing.com/images/search?q=%e8%b1%86%e9%85%a5%e7%b3%96&id=60B3EF8E4D4D466A46D25D8755BC21196A8A9848&FORM=IQFRBA)
+1. 图片
 
-        ![这是一张豆酥糖图片](https://cn.bing.com/images/search?q=%e8%b1%86%e9%85%a5%e7%b3%96&id=60B3EF8E4D4D466A46D25D8755BC21196A8A9848&FORM=IQFRBA)
+![这是一张咖啡图片](/img/post-bg-coffee.jpeg)
 
+        ![这是一张咖啡图片](/img/post-bg-coffee.jpeg)
 
+2. 带链接的图片
 
+[![这是一张咖啡图片](/img/post-bg-coffee.jpeg)]
+
+        [![这是一张咖啡图片](/img/post-bg-coffee.jpeg)]
+
+3. 带title（鼠标放上会有解释）的图片
+
+![这是一张咖啡图片](/img/post-bg-coffee.jpeg "这是title")
+
+        ![这是一张咖啡图片](/img/post-bg-coffee.jpeg "这是title")
+
+# emoji表情
+
+![image](https://github.com/beansugar001/beansugar001.github.io/assets/145973551/1d355c0b-c1c0-4f72-bf2e-ee7cc105af5b)
