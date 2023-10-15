@@ -2,7 +2,7 @@
 layout:     post   				    # 使用的布局（不需要改）
 title:      Markdown learning				# 标题 
 subtitle:   Markdown learning day1 #副标题
-date:       2023-10-08 				# 时间
+date:       2023-10-15 				# 时间
 author:     beansugar 						# 作者
 header-img: img/post-bg-2015.jpg 	#这篇文章标题背景图片
 catalog: true 						# 是否归档
@@ -10,6 +10,7 @@ tags:								#标签
     - markdown
 ---
 
+最近的事情已经多到让我身心俱疲的地步了，一直没时间写，而且遇到了很多问题（代码写不出来）。今天抽空晚上10点学一会，不然离自己的目标越来越远了~~希望尽快度过10月份吧。
 
 # 标题的使用  #
 
@@ -341,6 +342,67 @@ ___
 ^[行内脚注]  
 
         ^[行内脚注]  
+
+3. 作为常量
+
+![logo](列如图片的超链接)  
+再其他地方可以应引用
+好处：可以增加代码的可读性和整洁性
+
+# 公式
+
+1. 常用公式
+
+markdown本身没有公式，但支持kates的语法。
+
+用两个$来包裹起来
+
+$a^2=b^2+c^2$
+
+    $a^2=b^2+c^2$
+
+2. 块公式
+
+前后各用两个$$包裹，各自独占一行
+
+$$
+f(x)=\int_{-\infty}^\infty
+    \hat{f}(\xi),e^{2 \pi i \xi x}\,d\xi
+$$
+
+    $$
+    f(x)=\int_{-\infty}^\infty
+        \hat{f}(\xi),e^{2 \pi i \xi x}\,d\xi
+    $$
+
+# 图表
+
+markdown本身不支持图标，但支持许多图表解释，如mermaid。
+
+1. 流程图 
+
+```mermaid
+flowchart LR
+    A[直角矩形]-->|链接文本|B(矩形)
+    B-->C{选择}
+    C-->|一|D[结果一]
+    C-->|二|E[结果二]
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
