@@ -1,7 +1,7 @@
 ---
 layout:     post   				    # 使用的布局（不需要改）
 title:      Markdown learning				# 标题 
-subtitle:   Markdown learning day1 #副标题
+subtitle:   Markdown learning  #副标题
 date:       2023-10-15 				# 时间
 author:     beansugar 						# 作者
 header-img: img/post-bg-2015.jpg 	#这篇文章标题背景图片
