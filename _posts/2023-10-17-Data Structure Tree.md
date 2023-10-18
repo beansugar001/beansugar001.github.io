@@ -50,9 +50,64 @@ tags:								#标签
 
 2. 几个重要性质
 
-* 
+* 一个二叉树第i层的最大结点数为：2^(i-1),(i>1)
+* 深度为k的二叉树有最大结点总数为：2^k -1 ,k>=1
+* 对任意非空二叉树T，若n0代表叶节点的个数为0，n2代表度为2的非叶节点个数，那么两者满足关系n0=n2+1
 
+3. 二叉树的储存结构
 
+**顺序存储结构**
 
-3. 
+* 非根结点的父结点的序号是[i\1]
+* 结点的左孩子的序号是2i（若2i+1<=n,则没有左孩子）
+* 结点的右孩子的序号是2i+1(若2i+1<=n,则没有右孩子)
 
+4. 二叉树的遍历
+
+**1.先序遍历**
+
+过程：1.访问根节点2.先序遍历左子树3.先序遍历右子树
+
+```c
+void PreOrderTreversal(BinTree BT)
+{
+    if(BT){
+        printf("%d",BT->Data);
+        PreOrderTreversal(BT->Left);
+        PreOrderTreversal(BT->Right);
+    }
+}
+
+```
+
+**2.中序遍历**
+
+过程：1.中序遍历左子树2.访问根节点3.中序遍历右子树
+
+```c
+void PreOrderTreversal(BinTree BT)
+{
+    if(BT){
+        PreOrderTreversal(BT->Left);
+        printf("%d",BT->Data);
+        PreOrderTreversal(BT->Right);
+    }
+}
+
+```
+
+**2.后序遍历**
+
+过程：1.后序遍历左子树2.后序遍历右子树3.访问根节点
+
+```c
+void PreOrderTreversal(BinTree BT)
+{
+    if(BT){
+        PreOrderTreversal(BT->Left);
+        PreOrderTreversal(BT->Right);
+        printf("%d",BT->Data);
+    }
+}
+
+```
