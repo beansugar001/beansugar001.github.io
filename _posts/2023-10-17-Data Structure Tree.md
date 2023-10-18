@@ -80,9 +80,32 @@ void PreOrderTreversal(BinTree BT)
 
 ```
 
+**先序非递归**
+
+```c
+void IsOrderTreversal(BinTree BT)
+{
+    BinTree T=BT;/*创建并初始化堆栈S*/
+    Stack S = CreatStack(Maxsize);
+    while( T||!IsEmpty(S) ){
+        while(T){/*一直向左并将沿途结点压入堆栈*/
+            printf("%5d",T->Data);/*（访问）打印结点*/
+            Push(S,T);
+            T=T->Left;
+        }
+        if(!IsEmpty(s)){
+            T = Pop(S);/*结点弹出堆栈*/
+            T=T->Right;/*转向右子树*/
+        }
+}
+```
+
+
 **2.中序遍历**
 
 过程：1.中序遍历左子树2.访问根节点3.中序遍历右子树
+
+**数组递归**
 
 ```c
 void PreOrderTreversal(BinTree BT)
@@ -96,7 +119,27 @@ void PreOrderTreversal(BinTree BT)
 
 ```
 
-**2.后序遍历**
+**堆栈非递归**
+
+```c
+void IsOrderTreversal(BinTree BT)
+{
+    BinTree T=BT;/*创建并初始化堆栈S*/
+    Stack S = CreatStack(Maxsize);
+    while( T||!IsEmpty(S) ){
+        while(T){/*一直向左并将沿途结点压入堆栈*/
+            Push(S,T);
+            T=T->Left;
+        }
+        if(!IsEmpty(s)){
+            T = Pop(S);/*结点弹出堆栈*/
+            printf("%5d",T->Data);/*（访问）打印结点*/
+            T=T->Right;/*转向右子树*/
+        }
+}
+```
+
+**3.后序遍历**
 
 过程：1.后序遍历左子树2.后序遍历右子树3.访问根节点
 
