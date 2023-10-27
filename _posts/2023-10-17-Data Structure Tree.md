@@ -155,7 +155,7 @@ void PreOrderTreversal(BinTree BT)
 
 ```
 
-完全二叉树后序遍历倒推输出层序遍历
+**完全二叉树后序遍历倒推输出层序遍历**
 
 ```c
 #include<stdio.h>//假设递归范围[l, r],r这个位置就是该子树的根,左子树就是[l + size / 2 - 1]
