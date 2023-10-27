@@ -154,3 +154,28 @@ void PreOrderTreversal(BinTree BT)
 }
 
 ```
+
+完全二叉树后序遍历倒推输出层序遍历
+
+```c
+#include<stdio.h>//假设递归范围[l, r],r这个位置就是该子树的根,左子树就是[l + size / 2 - 1]
+#define MAX 100
+int a[MAX],tree[MAX];
+int se=0,n;//巧妙运用se来作为数组a的下标使其与层序遍历的下标对应
+void operate(int h)
+{
+    if(h>n)return ;
+    int L=h*2;
+    int R=h*2+1;
+    operate(L);operate(R);
+    tree[h]=a[++se];
+}
+int main()
+{
+    scanf("%d",&n);
+    for(int i=1;i<=n;i++)scanf("%d",&a[i]);
+    operate(1);
+    for(int i=1;i<=n;i++)i==n?printf("%d",tree[i]):printf("%d ",tree[i]);
+    return 0;
+}
+```
