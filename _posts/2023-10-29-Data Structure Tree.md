@@ -2,7 +2,7 @@
 layout:     post   				    # 使用的布局（不需要改）
 title:      Data Structure			# 标题 
 subtitle:   Tree  #副标题
-date:       2023-10-17 				# 时间
+date:       2023-10-29 				# 时间
 author:     beansugar 						# 作者
 header-img: img/post-bg-2015.jpg 	#这篇文章标题背景图片
 catalog: true 						# 是否归档
