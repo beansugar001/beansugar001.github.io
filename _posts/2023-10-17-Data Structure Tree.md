@@ -87,7 +87,7 @@ TreeNode* createNode(int data) {
 ```
 
 ```c
-//后序遍历和中序遍历
+//后序和中序生成树
 TreeNode* BuildTree(int* lst, int* mid, int n) {//其中lst和mid为数组，n为数组大小
     int i;
     if (n <= 0) return NULL;
@@ -105,7 +105,7 @@ TreeNode* BuildTree(int* lst, int* mid, int n) {//其中lst和mid为数组，n�
 ```
 
 ```c
-//先序遍历序列和中序遍历序列,树为char类型
+//先序和中序,树为char类型生成树
 BTNode* CreateBTree(char *pre, char *in, int n)
 {
     int k;
@@ -225,7 +225,98 @@ void PreOrderTreversal(BinTree BT)
 
 2. 队列实现
 
+算法思想：借助一个队列，根树进队；队不为空时循环“从队列中出一个树p，访问该树根结点；*若它有左子树，左子树进队；若它有右子树，右子树进队。”
 
+```c
+
+#include<stdio.h>
+#include<stdlib.h>
+#include<malloc.h>
+typedef struct TreeNode{
+	TreeNode *left;
+	TreeNode *right;
+	int data;
+}TreeNode,*pTreeNode;
+ 
+typedef struct QueueNode{
+	pTreeNode data;
+	QueueNode *next;
+}QueueNode,*pQueueNode;
+ 
+typedef struct Queue{
+	pQueueNode front;
+	pQueueNode rear;
+}Queue,*pQueue;
+ 
+void create(pTreeNode *t){
+	int ch;
+	scanf_s("%d",&ch);
+	if(ch==-1){
+		(*t)=NULL;
+		return;
+	}else{
+		(*t)=(pTreeNode)malloc(sizeof(TreeNode));
+		(*t)->data=ch;
+		printf("请输入%d的左节点数据:",ch);
+		create(&((*t)->left));
+		printf("请输入%d的右节点数据:",ch);
+		create(&((*t)->right));
+	}
+}
+ 
+pQueue init(pQueue pq){
+	pq->front=(pQueueNode)malloc(sizeof(QueueNode));
+	pq->front->next=NULL;
+	pq->rear=pq->front;
+	return pq;
+}
+ 
+void enqueue(pQueue pq,pTreeNode t){
+	pQueueNode pNew=(pQueueNode)malloc(sizeof(QueueNode));
+	pNew->data=t;
+	pNew->next=NULL;
+	pq->rear->next=pNew;
+	pq->rear=pNew;
+}
+ 
+pTreeNode dequeue(pQueue pq){
+	pQueueNode pTemp=(pQueueNode)malloc(sizeof(QueueNode));
+	pTemp=pq->front->next;
+	if(pTemp->next==NULL){
+		pq->rear=pq->front;
+	}else{
+		pq->front->next=pTemp->next;
+	}
+	pTreeNode x=pTemp->data;
+	free(pTemp);
+	return x;
+}
+ 
+void LevelOrderBinaryTree(pTreeNode t){
+	pQueue pq=(pQueue)malloc(sizeof(Queue));
+	pq=init(pq);
+	enqueue(pq,t);
+	while(pq->rear!=pq->front){
+		pTreeNode x=dequeue(pq);
+		printf("%d ",x->data);
+		if(x->left){
+			enqueue(pq,x->left);
+		}
+		if(x->right){
+			enqueue(pq,x->right);
+		}
+	}
+}
+void main(){
+	pTreeNode t;
+	printf("请输入第一个节点数据,-1代表没数据:");
+	create(&t);
+	system("pause");
+	printf("层序遍历如下:");
+	LevelOrderBinaryTree(t);
+	system("pause");
+}
+```
 
 **完全二叉树后序遍历倒推输出层序遍历**
 
