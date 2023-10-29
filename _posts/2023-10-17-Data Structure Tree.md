@@ -23,6 +23,17 @@ tags:								#标签
 * 除了根节点外，每个结点有且仅有一个父节点
 * 一颗N结点的树有N-1条边
 
+程序中的定义方法
+
+```c
+// 定义二叉树节点结构
+typedef struct TreeNode {
+    int data;
+    struct TreeNode* left;//left结点也拥有data,left,right 结构，其中right和left为指针
+    struct TreeNode* right;
+} TreeNode;
+```
+
 # 树的基本术语
 
 1. 结点的度(Degree):结点子树的个数
@@ -62,7 +73,58 @@ tags:								#标签
 * 结点的左孩子的序号是2i（若2i+1<=n,则没有左孩子）
 * 结点的右孩子的序号是2i+1(若2i+1<=n,则没有右孩子)
 
-4. 二叉树的遍历
+# 创建二叉树的结点
+
+```c
+//一般情况
+TreeNode* createNode(int data) {
+    TreeNode* newNode = (TreeNode*)malloc(sizeof(TreeNode));
+    newNode->data = data;
+    newNode->left = NULL;
+    newNode->right = NULL;
+    return newNode;
+}
+```
+
+```c
+//后序遍历和中序遍历
+TreeNode* BuildTree(int* lst, int* mid, int n) {//其中lst和mid为数组，n为数组大小
+    int i;
+    if (n <= 0) return NULL;
+    TreeNode* b = (TreeNode*)malloc(sizeof(TreeNode));
+    b->data = lst[n - 1];//后序遍历的最后一个结点为根结点
+    for (i = 0; i < n; i++) {
+        if (mid[i] == lst[n - 1]) break;//找到中序遍历中根结点的位置，将其分为前后两端
+    }
+    int k = i;//前段的长度
+    int l = n - i - 1;//后段的长度
+    b->left = BuildTree(lst, mid, k);
+    b->right = BuildTree(lst + k, mid + i + 1, l);//将分出来的两端进行比较，重复递归操作
+    return b;
+}
+```
+
+```c
+//先序遍历序列和中序遍历序列,树为char类型
+BTNode* CreateBTree(char *pre, char *in, int n)
+{
+    int k;
+    char *p;
+    if (n <= 0)
+        return NULL;
+    BTNode *b = (BTNode*)malloc(sizeof(BTNode));
+    b->data = *pre;
+    for (p = in; p < in + n; ++p)
+        if (*p == *pre)
+            break;
+    k = p-in;
+    b->lchild = CreateBTree(pre+1, in, k);
+    b->rchild = CreateBTree(pre+k+1, p+1, n-k-1);
+    return b;
+}
+```
+
+# 二叉树的遍历
 
 **1.先序遍历**
 
@@ -155,6 +217,16 @@ void PreOrderTreversal(BinTree BT)
 
 ```
 
+**层序遍历**
+
+1. 数组实现
+
+
+
+2. 队列实现
+
+
+
 **完全二叉树后序遍历倒推输出层序遍历**
 
 ```c
@@ -179,3 +251,5 @@ int main()
     return 0;
 }
 ```
+
+
