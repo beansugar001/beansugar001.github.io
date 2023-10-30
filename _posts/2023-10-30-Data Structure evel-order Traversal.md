@@ -12,11 +12,11 @@ tags:								#标签
 
 ## 队列实现
 
-### 思路
+#### 思路
 
 借助一个队列，根树进队。若队列不为空，从front出队，若有左子树，左子树进队，若有右子树，右子树进队，进行递归操作。
 
-### 前期准备
+#### 前期准备
 
 ```c
 #include<stdio.h>
@@ -55,7 +55,7 @@ pQueue init(pQueue pq){
 }
 ```
 
-### 二叉树的生成
+#### 二叉树的生成
 
 ```c
 void create(pTreeNode *t){
@@ -75,7 +75,7 @@ void create(pTreeNode *t){
 }
 ```
 
-### 入队与出队
+#### 入队与出队
 
 ```c
 //入队
@@ -101,7 +101,7 @@ pTreeNode dequeue(pQueue pq){
 }
 ```
 
-### 进行层序遍历
+#### 进行层序遍历
 
 ```c
 void LevelOrderBinaryTree(pTreeNode t){
@@ -121,7 +121,7 @@ void LevelOrderBinaryTree(pTreeNode t){
 }
 ```
 
-### 主函数
+#### 主函数
 
 ```c
 void main(){
@@ -135,7 +135,7 @@ void main(){
 }
 ```
 
-### 完整代码
+#### 完整代码
 
 ```c
 #define _CRT_SECURE_NO_WARNINGS
@@ -228,9 +228,86 @@ void main(){
 }
 ```
 
+## 队列实现
 
+这个简单~浅浅看一下吧~
 
+#### 完整代码
 
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+// TreeNode 结构体
+typedef struct TreeNode {
+    int data;
+    struct TreeNode* left;
+    struct TreeNode* right;
+} TreeNode;
+
+// pTreeNode 定义
+typedef TreeNode* pTreeNode;
+
+// 层序遍历函数，使用数组实现
+void levelOrderTraversal(pTreeNode root) {
+    if (root == NULL) {
+        return;
+    }
+
+    // 创建一个数组来模拟队列
+    pTreeNode queue[100]; // 假定树节点数不超过100
+    int front = 0, rear = 0;
+
+    // 将根节点入队
+    queue[rear++] = root;
+
+    while (front < rear) {
+        pTreeNode current = queue[front++]; // 出队
+
+        // 打印当前节点的值
+        printf("%d ", current->data);
+
+        // 将左子节点入队
+        if (current->left != NULL) {
+            queue[rear++] = current->left;
+        }
+
+        // 将右子节点入队
+        if (current->right != NULL) {
+            queue[rear++] = current->right;
+        }
+    }
+}
+
+int main() {
+    // 创建一个二叉树示例
+    pTreeNode root = (pTreeNode)malloc(sizeof(TreeNode));
+    root->data = 1;
+    root->left = (pTreeNode)malloc(sizeof(TreeNode));
+    root->left->data = 2;
+    root->right = (pTreeNode)malloc(sizeof(TreeNode));
+    root->right->data = 3;
+    root->left->left = NULL;
+    root->left->right = NULL;
+    root->right->left = (pTreeNode)malloc(sizeof(TreeNode));
+    root->right->left->data = 4;
+    root->right->right = NULL;
+    root->right->left->left = NULL;
+    root->right->left->right = NULL;
+
+    printf("层序遍历如下: ");
+    levelOrderTraversal(root);
+
+    // 释放内存
+    free(root->right->left);
+    free(root->right);
+    free(root->left);
+    free(root);
+    
+    return 0;
+}
+
+```
 
 
 
